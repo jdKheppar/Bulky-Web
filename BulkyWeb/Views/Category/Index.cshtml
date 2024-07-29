@@ -1,2 +1,62 @@
-﻿
-<h1>Hello World</h1>
+﻿@model List<Category>
+
+
+<div class="container">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Category List</h2>
+        </div>
+        <div class="col-6 text-end">
+            @* asp-controller="" we can skip this controller if we are making a call from a veiw with same Controller*@
+            <a asp-action="Create" class="btn btn-primary">  
+                <i class="bg-info bi-plus-circle"></i>  Create New Category
+            </a> 
+        </div>
+    </div>
+    
+    <div class="row">
+        <table class="table table-bordered table-stripped">
+            <thead>
+                <tr>
+                    <th>
+                        Category ID
+                    </th>
+                    <th>
+                        Category Name
+                    </th>
+                    <th>
+                        Display Order
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var obj in Model.OrderBy(u => u.DisplayOrder))
+                {
+                    <tr>
+                        <td>
+                            @obj.Id
+                        </td>
+                        <td>
+                            @obj.Name
+                        </td>
+                        <td>
+                            @obj.DisplayOrder
+                        </td>
+                        <td>
+                            <div class="w-75 btn-group" role="group">
+                                <a asp-controller="Category" asp-action="Edit" asp-route-Id ="@obj.Id" class="btn btn-primary mx-2">
+                                    <i class="bi bi-pencil-square"></i>Edit
+                                </a>
+                                <a asp-controller="Category" asp-action="Delete" asp-route-Id="@obj.Id" class="btn btn-danger mx-2">
+                                    <i class="bi bi-trash-fill"></i>Delete
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+   
+</div>
