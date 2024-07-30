@@ -1,8 +1,8 @@
-﻿using BulkyWeb.Models;
+﻿using Bulky.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
 
-namespace BulkyWeb.Data
+namespace Bulky.DataAcess
 {
     public class ApplicationDbContext: DbContext
     {

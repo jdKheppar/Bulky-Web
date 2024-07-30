@@ -6,6 +6,8 @@ This section contains general information about ASP.NET Core.
 ## Key Points
 - ASP.NET Core is a cross-platform, open-source framework for building web apps and services.
 - ASP.NET Core primarily provides server-side rendering. If you need to implement client-side rendering, you need to use SPA frameworks or libraries like Angular, React, or Vue.js.
+- In general, we can put everything in a single project, but in real world projects, we usually use create separate project for each functionality
+like one project for Models, one for DataAccess etc. The new projects would be of the type class. (N-tier Architecture)
 
 # CREATING CRUD OPERATIONS
 
@@ -93,6 +95,12 @@ In this section, we will create a simple ASP.NET Core (MVC) app with a SQL Serve
 
 21. **Toast Messages**
     - Use partial views to display toast messages across the app.
+
+22. **Ntier Architecture**
+    - Usually in the real world projects, we divide the project into the smaller projects being called by one of the project with a solution. To
+    - Acheive this architect, we usually create a DataAccess project, Models project and Utility project etc. 
+    - Once, we create a DataAccess project, we add all the files related to db in it. So, all the operations like migration and the database-update are done on this project.
+    - If you delete migrations folder, you need to rewrite the migrations and update database commands.
 
 ## Link to Tutorial
 [Watch the Tutorial](https://youtu.be/AopeJjkcRvU?si=wsuyeQ4GAw4CuyHM)
