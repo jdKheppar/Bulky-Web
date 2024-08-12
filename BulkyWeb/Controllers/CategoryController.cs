@@ -7,15 +7,15 @@ namespace BulkyWeb.Controllers
 {
     public class CategoryController : Controller
     {
-        private readonly ICategory _categoryRepo;
-        public CategoryController(ICategory db)
+        private readonly IUnitOfWork _unitOfWork;
+        public CategoryController(IUnitOfWork unitOfWork)
         {
-            _categoryRepo = db;
+            _unitOfWork = unitOfWork;
         }
         public IActionResult Index()
         {
             //var objCategoryList = _db.JCategories.ToList(); in this way var can get its type based on the result or we can tell it explicitly
-            List<Category> objCategoryList = _categoryRepo.GetAll().ToList();
+            List<Category> objCategoryList = _unitOfWork.Category.GetAll().ToList();
             //List<Category> objCategoryList = [.. _db.JCategories]; it is equal to the above expression, it's using the collection expression
 
             return View(objCategoryList);
@@ -28,8 +28,8 @@ namespace BulkyWeb.Controllers
         [HttpPost]
         public IActionResult Create(Category obj)
         {
-            _categoryRepo.Add(obj);
-            _categoryRepo.Save();
+            _unitOfWork.Category.Add(obj);
+            _unitOfWork.Save();
             return RedirectToAction("Index");
             // RedirectToAction("ViewName","ControllerName") but since we are in the same controller we can skip that
         }
@@ -40,7 +40,7 @@ namespace BulkyWeb.Controllers
             {
                 return NotFound();
             }
-            Category? categoryFromDb = _categoryRepo.Get(u=>u.Id==Id);
+            Category? categoryFromDb = _unitOfWork.Category.Get(u=>u.Id==Id);
             
             if (categoryFromDb == null)
             {
@@ -53,8 +53,8 @@ namespace BulkyWeb.Controllers
         public IActionResult Edit(Category obj)
             //If you click on the above Edit keyword in visual studio, you will get an option to add a new related to this Controller
         {
-            _categoryRepo.Update(obj);
-            _categoryRepo.Save();
+            _unitOfWork.Category.Update(obj);
+            _unitOfWork.Save();
             return RedirectToAction("Index");
             // RedirectToAction("ViewName","ControllerName") but since we are in the same controller we can skip that
         }
@@ -65,7 +65,7 @@ namespace BulkyWeb.Controllers
             {
                 return NotFound();
             }
-            Category? categoryFromDb = _categoryRepo.Get(u => u.Id == Id); ;
+            Category? categoryFromDb = _unitOfWork.Category.Get(u => u.Id == Id); ;
             
             if (categoryFromDb == null)
             {
@@ -76,13 +76,13 @@ namespace BulkyWeb.Controllers
         [HttpPost, ActionName("Delete")]
         public IActionResult DeletePOST(int? Id)
         {
-            Category? obj = _categoryRepo.Get(u => u.Id == Id); ;
+            Category? obj = _unitOfWork.Category.Get(u => u.Id == Id); ;
             if (obj == null)
             {
                 return NotFound();
             }
-            _categoryRepo.Remove(obj);
-            _categoryRepo.Save();
+            _unitOfWork.Category.Remove(obj);
+            _unitOfWork.Save();
             return RedirectToAction("Index");
         }
     }

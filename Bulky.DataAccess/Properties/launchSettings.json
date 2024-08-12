@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Bulky.DataAccess": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:60648;http://localhost:60649"
+    }
+  }
+}

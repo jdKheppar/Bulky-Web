@@ -8,6 +8,12 @@ This section contains general information about ASP.NET Core.
 - ASP.NET Core primarily provides server-side rendering. If you need to implement client-side rendering, you need to use SPA frameworks or libraries like Angular, React, or Vue.js.
 - In general, we can put everything in a single project, but in real world projects, we usually use create separate project for each functionality
 like one project for Models, one for DataAccess etc. The new projects would be of the type class. (N-tier Architecture)
+- If you change your database but migrations are present, you just need to update-database rather than creating the migrations from scratch.
+- Currently, we are using the local database in our project but if we want to deploy it on say azure, we just need to give the azure database connections
+string and everything is good to go.
+- We can rename our projects but that results in dependencies conflicts we solve them by find and replace.
+- In the context of .NET , repository pattern provides a way to abstract and separate the data access logic from the business logic.
+- The Unit of Work pattern is a design pattern that helps manage transactions and ensures consistency in data operations. It coordinates the work of multiple repositories and ensures that changes to the data are committed or rolled back together, 
 
 # CREATING CRUD OPERATIONS
 
