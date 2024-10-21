@@ -58,7 +58,8 @@ namespace BulkyWeb.Controllers
             return RedirectToAction("Index");
             // RedirectToAction("ViewName","ControllerName") but since we are in the same controller we can skip that
         }
-
+        
+        //Delete View
         public IActionResult Delete(int? Id)
         {
             if (Id == null || Id == 0)
@@ -73,6 +74,8 @@ namespace BulkyWeb.Controllers
             }
             return View(categoryFromDb);
         }
+
+        //Delete API
         [HttpPost, ActionName("Delete")]
         public IActionResult DeletePOST(int? Id)
         {

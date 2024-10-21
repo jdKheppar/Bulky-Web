@@ -12,9 +12,12 @@ namespace Bulky.Models
         public string Name { get; set; }
         public int DisplayOrder { get; set; }
     }
-    /*
+}
+
+
+ /*
      Below is the Sql Table created based on the above model using EF
-    SET ANSI_NULLS ON
+SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
@@ -31,4 +34,3 @@ CREATE TABLE [dbo].[JCategories](
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
      */
-}
