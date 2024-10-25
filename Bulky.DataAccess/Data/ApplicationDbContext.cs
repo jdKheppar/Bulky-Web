@@ -55,6 +55,7 @@ namespace Bulky.DataAcess
                     Author = "Julian Button",
                     Description = "Praesent vitae sodales libero. Praesent molestie orci augue, vitae euismod velit sollicitudin ac. Praesent vestibulum facilisis nibh ut ultricies.\r\n\r\nNunc malesuada viverra ipsum sit amet tincidunt. ",
                     ISBN = "RITO5555501",
+                   
                     ListPrice = 55,
                     Price = 50,
                     Price50 = 40,
@@ -67,6 +68,7 @@ namespace Bulky.DataAcess
                     Author = "Abby Muscles",
                     Description = "Praesent vitae sodales libero. Praesent molestie orci augue, vitae euismod velit sollicitudin ac. Praesent vestibulum facilisis nibh ut ultricies.\r\n\r\nNunc malesuada viverra ipsum sit amet tincidunt. ",
                     ISBN = "WS3333333301",
+                   
                     ListPrice = 70,
                     Price = 65,
                     Price50 = 60,
