@@ -110,3 +110,82 @@ In this section, we will create a simple ASP.NET Core (MVC) app with a SQL Serve
 
 ## Link to Tutorial
 [Watch the Tutorial](https://youtu.be/AopeJjkcRvU?si=wsuyeQ4GAw4CuyHM)
+
+Here's a revised section for **Visual Studio Configurations** with added information for Visual Studio Code, ASP.NET SDK setup, Entity Framework Core commands, and more.
+
+---
+
+# Visual Studio Configurations
+
+## Introduction
+Visual Studio is a primary IDE for .NET development, highly preferred by many developers due to its robust features, ease of use, and productivity tools. Visual Studio Code (VS Code), however, is a lightweight and flexible alternative, ideal as a secondary IDE. It supports ASP.NET Core development well, making it valuable for cross-platform scenarios, lightweight tasks, or working in environments where full Visual Studio installations aren't available.
+
+### Why Develop ASP.NET Core in VS Code?
+VS Code offers a fast, streamlined experience for editing code, running commands, and managing lightweight projects. It’s open-source, customizable with numerous extensions, and easily adapted to different project requirements, especially on non-Windows platforms.
+
+## Setting up ASP.NET Core in Visual Studio Code
+
+### Prerequisites
+1. **.NET SDK and Runtime**: Make sure to have the .NET SDK and Runtime installed. Download the latest version from [dotnet.microsoft.com](https://dotnet.microsoft.com/).
+2. **C# Extension for VS Code**: Install the C# extension from the VS Code Marketplace to get IntelliSense, debugging, and other C# language support features.
+3. **EF Core Tooling**: Install Entity Framework Core tools to manage database migrations.
+
+### Configuration Steps
+1. **Install .NET SDK**: Download and install the .NET SDK (if not already installed).
+   ```bash
+   dotnet --version
+   ```
+   Verify that the .NET SDK is correctly installed by running the command above.
+
+2. **C# Extension in VS Code**: Open VS Code, go to Extensions (`Ctrl+Shift+X`), and search for "C#." Install it to enable language features and debugging for .NET.
+
+3. **Project Setup**: To create a new ASP.NET Core project in VS Code, navigate to your desired folder and run:
+   ```bash
+   dotnet new mvc -n ProjectName
+   ```
+   Replace `ProjectName` with your project’s name.
+
+### Common Commands in VS Code
+
+| Command                           | Description                                               |
+|-----------------------------------|-----------------------------------------------------------|
+| `dotnet build`                    | Compiles the project.                                     |
+| `dotnet run`                      | Runs the project.                                         |
+| `dotnet watch run`                | Enables Hot Reload to watch for changes and rebuilds.     |
+| `dotnet clean`                    | Cleans build outputs.                                     |
+| `dotnet publish`                  | Publishes the app for deployment.                         |
+
+## Entity Framework Core Commands in VS Code
+
+When using VS Code, you’ll use the **CLI** for Entity Framework Core migrations and database updates.
+
+1. **Adding Migrations**
+   ```bash
+   dotnet ef migrations add MigrationName
+   ```
+   Replace `MigrationName` with a descriptive name for the migration (e.g., `InitialCreate`). This command generates migration files in the project.
+
+2. **Updating the Database**
+   ```bash
+   dotnet ef database update
+   ```
+   This command applies the latest migrations to the database. Run this each time you add a migration to sync the database structure with your code changes.
+
+3. **Removing a Migration**
+   ```bash
+   dotnet ef migrations remove
+   ```
+   Use this command if you want to discard the last migration before applying it to the database.
+
+4. **Listing Migrations**
+   ```bash
+   dotnet ef migrations list
+   ```
+   Shows a list of all migrations that have been added to the project.
+
+### Additional Tips
+
+- **Launch Configuration**: For debugging in VS Code, ensure you’ve configured a `launch.json` file under the `.vscode` folder. This file will include configurations for attaching to and running your ASP.NET Core app.
+- **Connecting to SQL Server**: To connect to a SQL Server database, update the `appsettings.json` file with the correct connection string, and ensure the database is accessible.
+- **Multi-project Solution**: For an N-tier architecture, open each project within the same VS Code workspace to easily navigate across different layers, like `DataAccess`, `Models`, and `Utilities`.
+
