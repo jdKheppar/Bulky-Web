@@ -107,6 +107,8 @@ In this section, we will create a simple ASP.NET Core (MVC) app with a SQL Serve
     - Acheive this architect, we usually create a DataAccess project, Models project and Utility project etc. 
     - Once, we create a DataAccess project, we add all the files related to db in it. So, all the operations like migration and the database-update are done on this project.
     - If you delete migrations folder, you need to rewrite the migrations and update database commands.
+23. **View Bag**
+    - View bag is used to transfer data from Controller to View and not vice versa, it is ideal in an situation where temp data is not in our model
 
 ## Link to Tutorial
 [Watch the Tutorial](https://youtu.be/AopeJjkcRvU?si=wsuyeQ4GAw4CuyHM)

@@ -4,7 +4,7 @@ namespace Bulky.DataAccess.Repository.IRepository
 {
     public interface ICategory: IRepository<Category>
     {
-        void Update(Category obj);
+        void Update(Category obj);//testing
         
     }
 }

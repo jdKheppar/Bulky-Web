@@ -3,6 +3,7 @@ using Bulky.DataAcess;
 using Microsoft.AspNetCore.Mvc;
 using Bulky.Models;
 using Bulky.DataAccess.Repository.IRepository;
+using Microsoft.AspNetCore.Mvc.Rendering;
 namespace BulkyWeb.Controllers
 {
     public class ProductController : Controller
@@ -17,12 +18,18 @@ namespace BulkyWeb.Controllers
             //var objProductList = _db.JProducts.ToList(); in this way var can get its type based on the result or we can tell it explicitly
             List<Product> objProductList = _unitOfWork.Product.GetAll().ToList();
             //List<Product> objProductList = [.. _db.JProducts]; it is equal to the above expression, it's using the collection expression
-
+            
             return View(objProductList);
         }
         public IActionResult Create()
         {
-
+            IEnumerable<SelectListItem> CategoryList = _unitOfWork.Category
+                   .GetAll().Select(u => new SelectListItem
+                   {
+                       Text = u.Name,
+                       Value = u.Id.ToString()
+                   });
+            ViewBag.CategoryList = CategoryList;
             return View();
         }
         [HttpPost]

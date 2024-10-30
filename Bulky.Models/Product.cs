@@ -1,5 +1,6 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Reflection.Metadata.Ecma335;
 
 namespace Bulky.Models
@@ -31,6 +32,12 @@ namespace Bulky.Models
         [Display(Name = "Price for 1-100")]
         [Range(1,1000)]
         public double Price100 { get; set; }
+
+        //Below changes will link the CategoryID as a foreign key in Product model/table
+        public int CategoryId { get; set; }
+        //[ForeignKey(nameof(CategoryId))]
+        [ForeignKey("CategoryId")]
+        public Category Category { get; set; }
 
     }
 }
