@@ -12,13 +12,36 @@
             <input asp-for="Title" class="form-control"/>
         </div>
         <div class="mb-3">
+            <label>Description</label>
+            <input asp-for="Description" class="form-control" />
+        </div>
+        <div class="mb-3">
             <label>Display Order</label>
             <input asp-for="ISBN" class="form-control"/>
         </div>
         <div class="mb-3">
+            <label>Author Name</label>
+            <input asp-for="Author" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label>List Price</label>
+            <input asp-for="ListPrice" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label>Price</label>
+            <input asp-for="Price" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label>Price 50</label>
+            <input asp-for="Price50" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label>Price 100</label>
+            <input asp-for="Price100" class="form-control" />
+        </div>
+        <div class="mb-3">
             <select asp-for="CategoryId" asp-items="ViewBag.CategoryList" class="form-select">
                 <option disabled selected>--Select Category--</option>
-
             </select>
             <label asp-for="CategoryId" class="ms-2"></label>
         </div>
