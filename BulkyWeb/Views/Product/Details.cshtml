@@ -1,0 +1,52 @@
+@model Bulky.Models.Product
+
+<div class="container">
+    <div class="row pt-4">
+        <div class="col-12">
+            <h2 class="text-primary">Product Details</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <dl class="row">
+                <dt class="col-sm-3">ID</dt>
+                <dd class="col-sm-9">@Model.Id</dd>
+
+                <dt class="col-sm-3">Title</dt>
+                <dd class="col-sm-9">@Model.Title</dd>
+
+                <dt class="col-sm-3">Author</dt>
+                <dd class="col-sm-9">@Model.Author</dd>
+
+                <dt class="col-sm-3">ISBN</dt>
+                <dd class="col-sm-9">@Model.ISBN</dd>
+
+                <dt class="col-sm-3">List Price</dt>
+                <dd class="col-sm-9">@Model.ListPrice</dd>
+
+                <dt class="col-sm-3">Price</dt>
+                <dd class="col-sm-9">@Model.Price</dd>
+
+                <dt class="col-sm-3">Price 50</dt>
+                <dd class="col-sm-9">@Model.Price50</dd>
+
+                <dt class="col-sm-3">Price 100</dt>
+                <dd class="col-sm-9">@Model.Price100</dd>
+
+                <dt class="col-sm-3">Category</dt>
+                <dd class="col-sm-9">@Model.Category?.Name</dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-12">
+            <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+            <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Delete</a>
+        </div>
+    </div>
+</div>
+
+

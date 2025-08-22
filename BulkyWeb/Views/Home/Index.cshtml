@@ -1,8 +1,54 @@
-﻿@{
+﻿@model List<Bulky.Models.Product>
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome to the Home Page</h1>
-    <p>Learn about <a href="https://youtu.be/AopeJjkcRvU?si=gJ-3pOBP4R2ahL6Q">building Web apps with ASP.NET Core</a>.</p>
+<div class="container">
+    <div class="row pt-4">
+        <div class="col-12">
+            <h1 class="display-6">Dashboard</h1>
+        </div>
+    </div>
+
+    <div class="row pt-2">
+        <div class="col-12">
+            <h4 class="text-primary">Recent Products</h4>
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>ISBN</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                @if (Model != null && Model.Count > 0)
+                {
+                    foreach (var product in Model)
+                    {
+                        <tr>
+                            <td>@product.Id</td>
+                            <td>@product.Title</td>
+                            <td>@product.ISBN</td>
+                            <td>
+                                    <div class="w-75 btn-group" role="group">
+                                        <a asp-controller="Product" asp-action="Details" asp-route-id="@product.Id" class="btn btn-info btn-sm mx-2">View</a>
+                                        <a asp-controller="Product" asp-action="Edit" asp-route-id="@product.Id" class="btn btn-primary btn-sm mx-2">Edit</a>
+                                        <a asp-controller="Product" asp-action="Delete" asp-route-id="@product.Id" class="btn btn-danger btn-sm mx-2">Delete</a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="4" class="text-center text-muted">No products found.</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>

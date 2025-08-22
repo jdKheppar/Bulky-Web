@@ -21,6 +21,27 @@ namespace BulkyWeb.Controllers
             
             return View(objProductList);
         }
+
+        //Details View
+        public IActionResult Details(int? Id)
+        {
+            if (Id == null || Id == 0)
+            {
+                return NotFound();
+            }
+            Product? productFromDb = _unitOfWork.Product.Get(u => u.Id == Id);
+
+            if (productFromDb != null)
+            {
+                productFromDb.Category = _unitOfWork.Category.Get(c => c.Id == productFromDb.CategoryId);
+            }
+
+            if (productFromDb == null)
+            {
+                return NotFound();
+            }
+            return View(productFromDb);
+        }
         public IActionResult Create()
         {
             IEnumerable<SelectListItem> CategoryList = _unitOfWork.Category
