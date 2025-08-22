@@ -15,6 +15,7 @@ namespace Bulky.DataAcess
         //in the below line JCategories is the name we are giving in the sql server
         public DbSet<Category> JCategories { get; set; }
         public DbSet<Product> JProducts { get; set; }
+        public DbSet<User> JUsers { get; set; }
 
         //Adding data to the table
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -104,7 +105,31 @@ namespace Bulky.DataAcess
                     Price100 = 20,
                     CategoryId = 2
                 }
-            );    
+            );
+
+            // Add sample users (password: admin123)
+            modelBuilder.Entity<User>().HasData(
+                new User
+                {
+                    Id = 1,
+                    Username = "admin",
+                    Email = "admin@bulky.com",
+                    PasswordHash = BCrypt.Net.BCrypt.HashPassword("admin123"),
+                    Role = "Admin",
+                    CreatedAt = DateTime.Now,
+                    IsActive = true
+                },
+                new User
+                {
+                    Id = 2,
+                    Username = "user",
+                    Email = "user@bulky.com",
+                    PasswordHash = BCrypt.Net.BCrypt.HashPassword("user123"),
+                    Role = "User",
+                    CreatedAt = DateTime.Now,
+                    IsActive = true
+                }
+            );
         }
 
         
