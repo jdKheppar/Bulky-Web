@@ -1,7 +1,7 @@
 # GENERAL
 
 ## Theme
-This section contains general information about ASP.NET Core.
+This repository contains general information about ASP.NET Core.
 
 ## Key Points
 - ASP.NET Core is a cross-platform, open-source framework for building web apps and services.
