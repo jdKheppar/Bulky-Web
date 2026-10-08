@@ -1,5 +1,7 @@
 using Bulky.DataAccess.Repository.IRepository;
 using Bulky.DataAcess;
+using BulkyWeb.Services;
+using BulkyWeb.Services.Tools;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,6 +16,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 //typically we use scoped service
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<GeminiService>();
+builder.Services.AddScoped<ProductTools>();
 
 // Add cookie authentication
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
