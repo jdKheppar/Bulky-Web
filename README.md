@@ -1,0 +1,1 @@
+Restore dependencies and apply migration
