@@ -11,6 +11,11 @@ namespace BulkyWeb.Controllers
         {
             _geminiService = geminiService;
         }
+        // Renders the AI UI page
+        public IActionResult Index()
+        {
+            return View();
+        }
 
         public async Task<IActionResult> Ask(string question)
         {

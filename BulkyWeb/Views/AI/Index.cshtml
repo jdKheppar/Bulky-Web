@@ -1,0 +1,54 @@
+@{
+    ViewData["Title"] = "AI Assistant";
+}
+
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <h1>AI Assistant</h1>
+        <p>Ask a category-related question. Example: "Show me products in SciFi"</p>
+
+        <div class="input-group mb-3">
+            <input id="questionInput" type="text" class="form-control" placeholder="Ask a category-related question..." />
+            <button id="askBtn" class="btn btn-primary">Ask</button>
+        </div>
+
+        <pre id="result" class="p-3 bg-light border" style="min-height:160px; white-space:pre-wrap;"></pre>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        (function () {
+            const input = document.getElementById('questionInput');
+            const btn = document.getElementById('askBtn');
+            const result = document.getElementById('result');
+
+            async function ask() {
+                const q = input.value.trim();
+                if (!q) {
+                    result.innerText = 'Please enter a question.';
+                    return;
+                }
+
+                result.innerText = 'Loading...';
+
+                try {
+                    const resp = await fetch('/AI/Ask?question=' + encodeURIComponent(q));
+                    const text = await resp.text();
+                    result.innerText = text;
+                }
+                catch (err) {
+                    result.innerText = 'Error: ' + (err.message || err);
+                }
+            }
+
+            btn.addEventListener('click', ask);
+            input.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    ask();
+                }
+            });
+        })();
+    </script>
+}
